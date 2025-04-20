@@ -1,5 +1,6 @@
 
 import agents.ea.NeuroEAgent;
+import agents.ea.NewNeuro;
 import engine.core.MarioGame;
 import engine.core.MarioResult;
 import agents.ea.NeuroEAgent;
@@ -32,18 +33,19 @@ public class PlayNEATMario {
     }
 
     public static void main(String[] args) {
-        String levelPath = "./levels/original/lvl-1.txt";
+        String levelPath = "./levels/original/lvl-15.txt";
         String levelContent = getLevel(levelPath);
 
         NeuroEAgent agent = new NeuroEAgent();
+        // NewNeuro agent = new NewNeuro();
+        MarioGame game = new MarioGame();
+
 
         System.out.println("Training NeuroEvolutionary Agent...");
-        MarioGame game = new MarioGame();
         game.runGame(agent, levelContent, 30, 0, false); // Training in initialize()
 
         System.out.println("Finished training. Running final simulation...");
         MarioResult result = game.runGame(agent, levelContent, 30, 0, true);
-
         printResults(result);
     }
 }
